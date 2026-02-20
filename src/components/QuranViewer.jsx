@@ -64,17 +64,17 @@ export const QuranViewer = () => {
                         </button>
                     </div>
                     <div style={{ flexGrow: 1, backgroundColor: '#fff', position: 'relative' }}>
-                        <iframe
-                            src="https://drive.google.com/file/d/1jenlUjSPqOFEmH5YONoz56V52kmRlBJo/preview"
+                        <object
+                            data="/quran.pdf#view=FitH"
+                            type="application/pdf"
                             style={{ width: '100%', height: '100%', border: 'none', position: 'absolute', top: 0, left: 0 }}
                             title="المصحف الشريف"
-                            allow="autoplay"
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '1rem', padding: '2rem', textAlign: 'center' }}>
-                                <p style={{ color: 'var(--color-primary)' }}>متصفحك لا يدعم عرض الإطارات.</p>
-                                <a href="https://drive.google.com/file/d/1jenlUjSPqOFEmH5YONoz56V52kmRlBJo/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textDecoration: 'none' }}>فتح المصحف في Google Drive</a>
+                                <p style={{ color: 'var(--color-primary)' }}>متصفحك لا يدعم عرض ملفات PDF مباشرة.</p>
+                                <a href="/quran.pdf" download className="btn btn-primary" style={{ textDecoration: 'none' }}>تحميل المصحف</a>
                             </div>
-                        </iframe>
+                        </object>
                     </div>
                 </div>
             )}
