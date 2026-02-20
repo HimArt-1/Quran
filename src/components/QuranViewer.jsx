@@ -27,11 +27,12 @@ export const QuranViewer = () => {
                     top: 0,
                     left: 0,
                     width: '100vw',
-                    height: '100vh',
+                    height: '100dvh', /* Use dvh for perfect mobile fullscreen */
                     backgroundColor: 'var(--color-primary)',
                     zIndex: 9999,
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    paddingTop: 'env(safe-area-inset-top)' /* Avoid mobile notches in full screen */
                 }}>
                     <div style={{
                         padding: '1rem 2rem',

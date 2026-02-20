@@ -28,6 +28,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  /* Remove blue tap highlight on mobile */
 }
 
 body {
@@ -36,9 +38,17 @@ body {
   background-attachment: fixed;
   color: var(--color-text);
   min-height: 100vh;
+  min-height: 100dvh;
+  /* Dynamic viewport height for modern mobile browsers */
   direction: rtl;
-  /* Right to Left for Arabic */
   overflow-x: hidden;
+  overscroll-behavior-y: none;
+  /* Prevent pull-to-refresh on mobile */
+  padding-top: env(safe-area-inset-top);
+  /* iPhone Notch Support */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 /* Islamic Geometric Background Pattern Overlay */
@@ -99,12 +109,20 @@ h6 {
   transition: all 0.3s ease;
   border: none;
   text-decoration: none;
+  user-select: none;
+  /* Prevent text selection on rapid tap */
+  -webkit-user-select: none;
 }
 
 .btn-primary {
   background: var(--color-accent);
   color: var(--color-primary);
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  /* Native push effect */
 }
 
 .btn-primary:hover {
@@ -117,6 +135,10 @@ h6 {
   background: var(--color-glass);
   color: var(--color-text);
   border: 1px solid var(--color-glass-border);
+}
+
+.btn-glass:active {
+  transform: scale(0.96);
 }
 
 .btn-glass:hover {
@@ -178,6 +200,9 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  user-select: none;
+  /* Prevent text selection */
+  -webkit-user-select: none;
 }
 
 .day-card:hover {
