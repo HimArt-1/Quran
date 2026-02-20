@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --color-primary: #0F2027;
+  /* Deep Navy Blue */
+  --color-secondary: #203A43;
+  /* Teal Blue */
+  --color-accent: #D4AF37;
+  /* Elegant Gold */
+  --color-accent-light: #F4E2A9;
+  /* Pale Gold for glows */
+  --color-success: #2ECC71;
+  /* Emerald Green */
+  --color-background-start: #0F2027;
+  --color-background-mid: #203A43;
+  --color-background-end: #2C5364;
+  --color-text: #F8F9FA;
+  --color-text-muted: #CBD5E1;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-hover: rgba(255, 255, 255, 0.15);
+
+  --font-arabic-calligraphy: 'Amiri', serif;
+  --font-ui: 'Cairo', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: linear-gradient(135deg, var(--color-background-start), var(--color-background-mid), var(--color-background-end));
+  background-attachment: fixed;
+  color: var(--color-text);
+  min-height: 100vh;
+  direction: rtl;
+  /* Right to Left for Arabic */
+  overflow-x: hidden;
+}
+
+/* Islamic Geometric Background Pattern Overlay */
+.bg-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23D4AF37' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-arabic-calligraphy);
+  color: var(--color-accent);
+}
+
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.btn-glass {
+  background: var(--color-glass);
+  color: var(--color-text);
+  border: 1px solid var(--color-glass-border);
+}
+
+.btn-glass:hover {
+  background: var(--color-glass-hover);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-start);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Tracker Grid styles */
+.tracker-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.day-card {
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.day-card.day-done {
+  background: linear-gradient(145deg, rgba(46, 204, 113, 0.1), rgba(32, 58, 67, 0.4));
+  border-color: var(--color-success);
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.day-number {
+  font-family: var(--font-arabic-calligraphy);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.status-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.day-card:hover .status-icon {
+  transform: scale(1.1);
+}
+
+.day-body {
+  z-index: 2;
+}
+
+.juz-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-accent);
+}
+
+.juz-pages {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.glow-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+  animation: slowPulse 4s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes slowPulse {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header Styles */
+.header-container {
+  padding: 1.5rem 2rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.header-titles h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+}
+
+.header-titles p {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* Quran Viewer Styles */
+.quran-viewer-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 80vh;
+  /* Make it tall enough to read comfortably */
+  margin-top: 1rem;
+}
+
+.viewer-header {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--color-glass-border);
+  text-align: center;
+}
+
+.viewer-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-accent-light);
+}
+
+.iframe-wrapper {
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+  background: #fff;
+  /* The official site is light-themed, so we give it a clean white backdrop */
+}
+
+.quran-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .tracker-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .header-container {
+    padding: 1rem;
+  }
+
+  .header-titles h1 {
+    font-size: 2rem;
+  }
+
+  .quran-viewer-container {
+    height: 90vh;
+    border-radius: 8px;
+    /* Slightly less rounded on small screens */
+  }
+}
